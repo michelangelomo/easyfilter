@@ -2,13 +2,13 @@
     "name": "michelangelomo/easyfilter",
     "description": "EasyFilter helps you to filter eloquent queries",
     "type": "library",
+    "version": "0.0.1",
     "authors": [
         {
             "name": "Michelangelo",
             "email": "michelangelo@morrillo.it"
         }
     ],
-    "minimum-stability": "dev",
     "require": {
         "php": "^7.0"
     },
@@ -21,8 +21,10 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Michelangelo\\EasyFilter\\": "packages/michelangelomo/easyfilter/src"
+            "Michelangelo\\EasyFilter\\": "src"
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
