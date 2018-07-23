@@ -6,7 +6,7 @@ class EasyFilter {
 
     protected $query;
 
-    public function __construct($query) {
+    public function __construct($query = null) {
         $this->query = $query;
     }
 
