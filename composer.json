@@ -1,0 +1,28 @@
+{
+    "name": "michelangelomo/easyfilter",
+    "description": "EasyFilter helps you to filter eloquent queries",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Michelangelo",
+            "email": "michelangelo@morrillo.it"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Michelangelo\\EasyFilter\\EasyFilterServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Michelangelo\\EasyFilter\\": "packages/michelangelomo/easyfilter/src"
+        }
+    }
+}
