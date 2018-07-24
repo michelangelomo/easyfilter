@@ -2,7 +2,7 @@
     "name": "michelangelomo/easyfilter",
     "description": "EasyFilter helps you to filter eloquent queries",
     "type": "library",
-    "version": "0.0.1",
+    "version": "0.0.16",
     "authors": [
         {
             "name": "Michelangelo",
