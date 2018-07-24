@@ -2,50 +2,118 @@
 
 namespace Michelangelo\EasyFilter;
 
+use Illuminate\Database\Eloquent\Builder;
+
 class EasyFilter {
 
     protected $query;
 
-    public function __construct($query = null) {
+    /**
+     * EasyFilter constructor.
+     * @param Builder|null $query
+     */
+    public function __construct(Builder $query = null) {
         $this->query = $query;
     }
 
-    public function orderByAsc($column){
-        $this->query->orderBy($column, 'ASC');
+    /**
+     * @param string $column
+     * @return Builder
+     */
+    public function orderByAsc(string $column) : Builder {
+        return $this->query->orderBy($column, 'ASC');
     }
 
-    public function orderByDesc($column){
-        $this->query->orderBy($column, 'DESC');
+    /**
+     * @param string $column
+     * @return Builder
+     */
+    public function orderByDesc(string $column) : Builder {
+        return $this->query->orderBy($column, 'DESC');
     }
 
-    public function whereLike($column, $text, $sx = '', $dx = ''){
-        $this->query->where($column, 'LIKE', "$sx$text$dx");
+    /**
+     * @param string $column
+     * @param mixed $text
+     * @param string $sx
+     * @param string $dx
+     * @return Builder
+     */
+    public function whereLike(string $column, $text, string $sx = '', string $dx = '') : Builder {
+        return $this->query->where($column, 'LIKE', "$sx$text$dx");
     }
 
-    public function whereEquals($column, $text){
-        $this->query->where($column, '=', $text);
+    /**
+     * @param string $column
+     * @param mixed $text
+     * @return Builder
+     */
+    public function whereEquals(string $column, $text) : Builder {
+        return $this->query->where($column, '=', $text);
     }
 
-    public function whereNotEquals($column, $text){
-        $this->query->where($column, '!=', $text);
+    /**
+     * @param string $column
+     * @param mixed $text
+     * @return Builder
+     */
+    public function whereNotEquals(string $column, $text) : Builder {
+        return $this->query->where($column, '!=', $text);
     }
 
-    public function whereCustom($column, $operator, $text){
-        $this->query->where($column, $operator, $text);
+    /**
+     * @param string $column
+     * @param string $operator
+     * @param mixed $text
+     * @return Builder
+     */
+    public function whereCustom(string $column, string $operator, $text) : Builder {
+        return $this->query->where($column, $operator, $text);
     }
 
-    public function whereHas($table, $f){
-        $this->query->whereHas($table, $f);
+    /**
+     * @param string $table
+     * @param $f
+     * @return Builder
+     */
+    public function whereHas(string $table, $f) : Builder {
+        return $this->query->whereHas($table, $f);
     }
 
-    public function whereHasLike($table, $column, $text, $sx = '', $dx = ''){
-        $this->query->whereHas($table, function ($q) use ($column, $text, $sx, $dx){
+    /**
+     * @param string $table
+     * @param string $column
+     * @param mixed $text
+     * @param string $sx
+     * @param string $dx
+     * @return Builder
+     */
+    public function whereHasLike(string $table, string $column, $text, string $sx = '', string $dx = '') : Builder {
+        return $this->query->whereHas($table, function ($q) use ($column, $text, $sx, $dx){
             $q->where($column, 'LIKE', "$sx$text$dx");
         });
     }
 
-    public function whereHasEquals($table, $column, $text){
-        $this->query->whereHas($table, function ($q) use($column, $text){
+    /**
+     * @param string $table
+     * @param string $column
+     * @param mixed $text
+     * @return Builder
+     */
+    public function whereHasEquals(string $table, string $column, $text) : Builder{
+        return $this->query->whereHas($table, function ($q) use($column, $text){
+            $q->where($column, '=', $text);
+        });
+    }
+
+    /**
+     * @param string $table
+     * @param string $column
+     * @param mixed $text
+     * @return Builder
+     */
+    public function orWhereHasEquals(string $table, string $column, $text) : Builder {
+        return $this->query->orWhereHas($table, function ($q) use($column, $text) {
             $q->where($column, '=', $text);
         });
     }
