@@ -107,6 +107,25 @@ class EasyFilter {
     }
 
     /**
+     * @param string $column
+     * @param mixed $text
+     * @return Builder
+     */
+    public function orWhereEquals(string $column, $text) : Builder {
+        return $this->query->orWhere($column, '=', $text);
+    }
+
+    /**
+     * @param string $column
+     * @param string $operator
+     * @param mixed $text
+     * @return Builder
+     */
+    public function orWhereCustom(string $column, string $operator, $text) : Builder {
+        return $this->query->orWhere($column, $operator, $text);
+    }
+
+    /**
      * @param string $table
      * @param string $column
      * @param mixed $text
