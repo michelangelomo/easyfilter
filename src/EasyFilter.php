@@ -136,4 +136,24 @@ class EasyFilter {
             $q->where($column, '=', $text);
         });
     }
+
+    /**
+     * @param string $column
+     * @param string $operator
+     * @param mixed $text
+     * @return Builder
+     */
+    public function whereIn(string $column, $text) : Builder {
+        return $this->query->whereIn($column,$text);
+    }
+
+    /**
+     * @param string $column
+     * @param string $operator
+     * @param mixed $text
+     * @return Builder
+     */
+    public function whereNotIn(string $column, $text) : Builder {
+        return $this->query->whereNotIn($column,$text);
+    }
 }
