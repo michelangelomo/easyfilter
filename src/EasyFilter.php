@@ -139,7 +139,6 @@ class EasyFilter {
 
     /**
      * @param string $column
-     * @param string $operator
      * @param mixed $text
      * @return Builder
      */
@@ -149,7 +148,6 @@ class EasyFilter {
 
     /**
      * @param string $column
-     * @param string $operator
      * @param mixed $text
      * @return Builder
      */
